@@ -13,32 +13,28 @@ usuario::usuario(string username, string password):
 		vector<string> amigos();
 	}
 
-bool usuario::addGame(int id)
+void usuario::addGame(int id)
 {
 	for (int i = 0; i < juego.size(); ++i)
+	{
+		if (id != juego[i])
 		{
-			if (id != juego[i])
-			{
-				juego.push_back(id);
-			}else{
-				throw "Ya Tienes Este Juego!!!";
-			}
+			throw "Ya Tienes Este Juego!!!";
 		}
-		return true;
+	}
+		juego.push_back(id);
 }
 
 void usuario::addFriend(string username)
 {
 	for (int i = 0; i < amigos.size(); ++i)
 	{
-		if ( username.compare(amigos[i]) !=0 )
-		{
-			amigos.push_back(username);
-		}else
+		if ( username.compare(amigos[i]) ==0 )
 		{
 			throw "Ya Existe Este Usuario!!!";
 		}
 	}
+	amigos.push_back(username);
 }
 
 void usuario::deleteGame(int id)

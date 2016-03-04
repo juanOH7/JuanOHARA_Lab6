@@ -13,7 +13,7 @@ class usuario
 	vector<string> amigos;	
 public:
 	usuario(string, string);
-	bool addGame(int id);
+	void addGame(int id);
 	void addFriend(string username);
 	void deleteGame(int id);
 	void deleteFriend(string username);	
