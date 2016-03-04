@@ -15,6 +15,6 @@ int juego::getId()
 string juego::toString()const
 {
 	stringstream ss;
-	ss << id << "," << nom << "i";
+	ss << id << "," << nom << "-";
 	return ss.str();
 }

@@ -15,25 +15,11 @@ usuario::usuario(string username, string password):
 
 void usuario::addGame(int id)
 {
-	for (int i = 0; i < juego.size(); ++i)
-	{
-		if (id != juego[i])
-		{
-			throw "Ya Tienes Este Juego!!!";
-		}
-	}
-		juego.push_back(id);
+	juego.push_back(id);
 }
 
 void usuario::addFriend(string username)
 {
-	for (int i = 0; i < amigos.size(); ++i)
-	{
-		if ( username.compare(amigos[i]) ==0 )
-		{
-			throw "Ya Existe Este Usuario!!!";
-		}
-	}
 	amigos.push_back(username);
 }
 
@@ -79,10 +65,10 @@ string usuario::getUsername()
 }
 bool usuario::isValidPassword(string usname, string pass)
 {
-	if ( (username.compare(usname)) && (password.compare(pass)) )
+	if ( (username.compare(usname) == 0 ) && (password.compare(pass) == 0 ) )
 	{
 		return true;
-	}else{
+	}else if ((username.compare(usname) != 0 ) && (password.compare(pass) != 0 )){
 		return false;
 	}
 }
@@ -90,6 +76,14 @@ bool usuario::isValidPassword(string usname, string pass)
 string usuario::toString()const
 {
 	stringstream ss;
-	ss << username << "," << password << "i";
+	ss << username << "," << password << "-";
+	for (int i = 0; i < juego.size(); ++i)
+	{
+		ss << "["<< juego[i] << "]";
+	}
+	for (int i = 0; i < amigos.size(); ++i)
+	{
+		ss << "[" << amigos[i] << "]";
+	}
 	return ss.str();
 }
